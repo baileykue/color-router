@@ -3,6 +3,7 @@ import {
   Redirect,
   BrowserRouter as Router,
   Route,
+  Switch,
   useParams,
 } from 'react-router-dom';
 
@@ -27,9 +28,20 @@ function ScreenColor() {
   return (
     <div>
       {/* Create Route Inside Switch */}
+
       <Link to="/rgb/192/192/192">Silver</Link>
       <Link to="/rgb/220/20/60">Crimson</Link>
       <Link to="/rgb/147/112/219">Purple</Link>
+
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/rgb/192/192/192" />
+        </Route>
+
+        <Route path="/rgb/:r/:g/:b">
+          <RGB />
+        </Route>
+      </Switch>
     </div>
   );
 }
@@ -37,15 +49,7 @@ function ScreenColor() {
 export default function App() {
   return (
     <Router>
-      <header>
-        <Route exact path="/">
-          <Redirect to="/rgb/192/192/192" />
-        </Route>
-      </header>
-      <Route path="/rgb/:r/:g/:b">
-        <ScreenColor />
-        <RGB />
-      </Route>
+      <ScreenColor />
     </Router>
   );
 }
