@@ -21,7 +21,12 @@ function RGB() {
 }
 
 function ScreenColor() {
-  return <div>{/* Create Route Inside Switch */}</div>;
+  return <div>
+    {/* Create Route Inside Switch */}
+          <Link to="/rgb/192/192/192">Silver</Link>
+          <Link to="/rgb/220/20/60">Crimson</Link>
+          <Link to="/rgb/147/112/219">Purple</Link>
+    </div>;
 }
 
 export default function App() {
@@ -31,14 +36,10 @@ export default function App() {
         <Route exact path="/">
           <Redirect to="/rgb/192/192/192" />
         </Route>
-        <ul>
-          <Link to="/rgb/192/192/192">Silver</Link>
-          <Link to="/rgb/220/20/60">Crimson</Link>
-          <Link to="/rgb/147/112/219">Purple</Link>
-        </ul>
       </header>
-
+      <Route path="/rgb/:r/:g/:b">
       <ScreenColor />
+      </Route>
     </Router>
   );
 }
